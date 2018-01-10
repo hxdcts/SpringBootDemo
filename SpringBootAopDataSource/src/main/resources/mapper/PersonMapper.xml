@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cts.spring.boot.demo.dao.IPersonDao" >
+	<resultMap id="BaseResultMap" type="com.cts.spring.boot.demo.bean.Person" >
+  	<id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="first_name" property="first_name" jdbcType="VARCHAR" />
+    <result column="last_name" property="last_name" jdbcType="VARCHAR" />
+    <result column="birth_date" property="birth_date" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="phone_no" property="phone_no" jdbcType="VARCHAR" />
+    <result column="update_dt" property="update_dt" jdbcType="VARCHAR" />
+  </resultMap>
+  	<select id="getPersonById" resultMap="BaseResultMap" >
+		select * from t_person where id = 1
+	</select>
+	
+	<select id="selectByOddUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from t_person where id = #{id}
+	</select>
+	<select id="selectByEvenUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from t_person where id =#{id}
+	</select>
+</mapper>
